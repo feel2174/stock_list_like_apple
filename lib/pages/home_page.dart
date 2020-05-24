@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterstock/view_models/home_page_view_model.dart';
 import 'package:flutterstock/widgets/news_list.dart';
 import 'package:flutterstock/widgets/stock_list.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,6 +26,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final vm = Provider.of<HomePageViewModel>(context);
+    DateTime now = new DateTime.now();
+
+    String formatter = DateFormat('yMd').format(now);
 
     return Scaffold(
         body: Stack(children: <Widget>[
@@ -41,7 +45,7 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.white,
                           fontSize: 36,
                           fontWeight: FontWeight.bold)),
-                  Text("January 5",
+                  Text("$formatter",
                       style: TextStyle(
                           color: Colors.grey[500],
                           fontSize: 30,
